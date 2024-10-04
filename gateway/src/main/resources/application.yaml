@@ -1,0 +1,37 @@
+
+server:
+  port: 8082
+  error:
+    include-stacktrace: never
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka
+  instance:
+    prefer-ip-address: true
+
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/distribuidora-users
+    username: ${USER_DB}
+    password: ${PASSWORD_DB}
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+jwt:
+  private:
+    key: classpath:app.key
+  public:
+    key: classpath:pub.key

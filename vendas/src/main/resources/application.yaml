@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: "vendas-ms"
+  datasource:
+    url: "jdbc:mysql://localhost:3306/distribuidora-vendas?createDatabaseIfNotExist=true"
+    username: ${USER_DB}
+    password: ${PASSWORD_DB}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+server:
+  error:
+    include-stacktrace: never
+  port: 0
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: "http://localhost:8081/eureka"
+  instance:
+    prefer-ip-address: true
